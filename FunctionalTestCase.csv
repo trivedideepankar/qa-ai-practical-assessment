@@ -1,0 +1,16 @@
+TestCaseID,Module,Title,Preconditions,Steps,ExpectedResult,Type,Tag,Priority,AC_Mapping
+UI-01,Auth,Register new user with valid details,User not registered,1. Open register page 2. Fill all required fields 3. Submit,User redirected to login or success state,Positive,Smoke,High,AC1-UI
+UI-02,Auth,Login and verify profile,User registered,1. Login with valid credentials 2. Open profile page,Profile shows correct name and email,Positive,Smoke,High,AC1-UI
+UI-03,Auth,Login with invalid password,User registered,1. Login with wrong password,Error message displayed user not logged in,Negative,Regression,Medium,AC1-UI
+UI-04,Cart,Add multiple products and update quantity,User logged in,1. Add product A 2. Add product B 3. Update quantity on cart,Cart shows both items with updated quantity,Positive,Regression,High,AC2-UI
+UI-05,Checkout,Checkout with Cash on Delivery,User logged in cart has items,1. Proceed checkout 2. Select COD 3. Finish order 4. Confirm twice,Order completes successfully,Positive,Smoke,High,AC2-UI
+UI-06,Invoice,Generate invoice and verify in My Invoices,User completed checkout,1. Complete COD checkout 2. Confirm twice 3. Open My Invoices,Invoice listed in My Invoices,Positive,Smoke,High,AC2-UI
+UI-07,Cart,Checkout with empty cart,User logged in,1. Open checkout with empty cart,Empty cart state or no checkout allowed,Negative,Regression,Medium,AC2-UI
+API-01,Auth,Register user via API,None,POST /users/register with valid payload,201 and user id returned,Positive,Smoke,High,AC1-API
+API-02,Auth,Login and obtain bearer token,User registered,POST /users/login with credentials,200 and access_token returned,Positive,Smoke,High,AC1-API
+API-03,Auth,Login with invalid credentials,None,POST /users/login with invalid credentials,401 or 400 error,Negative,Regression,Medium,AC1-API
+API-04,Cart,Create cart with bearer token,Valid bearer token,POST /carts with auth header,201 and cart_id returned,Positive,Regression,High,AC1-API
+API-05,Products,Retrieve products list,API available,GET /products,200 and product list returned,Positive,Regression,Medium,AC2-API
+API-06,Cart,Add products and verify cart,Cart and token exist,POST add product GET cart,Cart contains added products,Positive,Regression,High,AC2-API
+API-07,Invoice,Generate invoice with billing payload,Cart with items and token,POST /invoices with billing payload,200 and invoice id returned,Positive,Smoke,High,AC2-API
+API-08,Invoice,Generate invoice without token,None,POST /invoices without Authorization,401 unauthorized,Negative,Regression,Medium,AC2-API

@@ -1,0 +1,12 @@
+node_modules/
+playwright-report/
+test-results/
+allure-results/
+.env
+*.log
+storeBrowserState.json
+PrismStructure/API/testdata/AccessToken.json
+PrismStructure/API/testdata/registeredUser.json
+PrismStructure/API/testdata/createdCart.json
+PrismStructure/API/testdata/cartContents.json
+PrismStructure/API/testdata/generatedInvoice.json
