@@ -1,37 +1,52 @@
 # QA AI Practical Assessment
 
-AI-assisted QA delivery for **Practice Software Testing Toolshop** using the **Prism Playwright** framework.
+Beginner-friendly guide for the **Practice Software Testing Toolshop** QA assessment using **Prism Playwright** and **Cursor AI**.
 
-## Project Information
+> Reference submission: [assessmentAI_Project](https://github.com/ritukumari1-a11y/assessmentAI_Project)
 
-| Item | Location |
-|------|----------|
-| Framework | `PrismStructure/` (Prism + Playwright) |
-| Manual tests | `FunctionalTestCase.csv` |
-| AI workflow doc | `project-info.md` |
-| Prompt history | `ai-prompts/` |
-| UI page objects | `PrismStructure/UI/pageobjects/` |
-| API page objects | `PrismStructure/API/pageobjects/` |
-| Test data | `PrismStructure/API/utilities/testDataGenerator.js`, `PrismStructure/UI/resources/data/` |
-| Environment | `PrismStructure/.env` |
+---
 
-**Application Under Test**
+## What is this project?
+
+This repo demonstrates AI-assisted QA delivery:
+
+| Layer | What it covers |
+|-------|----------------|
+| **Manual tests** | 14 test cases in `FunctionalTestCase.csv` |
+| **UI automation** | Registration, login, cart, checkout, invoice (Playwright) |
+| **API automation** | Auth, cart, products, invoice (Playwright request API) |
+| **AI workflow** | Prompt history in `ai-prompts/` + reflection in `documentation-and-summary.md` |
+
+**Application under test**
 
 - UI: https://practicesoftwaretesting.com
 - API: https://api.practicesoftwaretesting.com
 
-**Note:** Invoice generation on UI requires clicking **Confirm twice**.
+**Important:** On UI checkout, click **Confirm / Finish twice** to generate an invoice.
 
-## Setup
+---
+
+## Step 1 — Prerequisites
+
+Install these before you start:
+
+- [Node.js](https://nodejs.org/) (v18 or later)
+- [Git](https://git-scm.com/)
+- Google Chrome (tests use Chrome channel)
+
+---
+
+## Step 2 — Clone and setup
 
 ```bash
-cd PrismStructure
+git clone <your-repo-url>
+cd qa-ai-practical-assessment/PrismStructure
 npm install
-cp .env.example .env   # if .env missing
+cp .env.example .env
 npx playwright install chromium
 ```
 
-Edit `PrismStructure/.env` if needed:
+The `.env` file should contain:
 
 ```env
 BASE_URL=https://practicesoftwaretesting.com
@@ -39,63 +54,123 @@ URL=https://api.practicesoftwaretesting.com
 TEST_USER_PASSWORD=welcome01
 ```
 
-## Run Tests
+No manual test user is required — tests create users automatically with Faker.
 
-From `PrismStructure/`:
+---
+
+## Step 3 — Run tests
+
+All commands run from the `PrismStructure/` folder.
+
+### Quick smoke check (recommended first)
 
 ```bash
-# All tests
-npm test
-
-# Smoke (@smoke tag)
 npm run test:smoke
+```
 
-# Regression (@regression tag)
+Runs 7 critical tests: register, login, checkout, invoice (UI + API).
+
+### Full regression
+
+```bash
 npm run test:regression
+```
 
-# UI only
-npm run test:ui
+Runs all 15 automated tests including negative cases.
 
-# API only
-npm run test:api
+### Run by layer
 
-# Headed mode (debugging)
+```bash
+npm run test:ui     # UI only (7 unique tests)
+npm run test:api    # API only (8 unique tests)
+npm test            # Full suite
+```
+
+### Debug in browser
+
+```bash
 npm run test:headed
 ```
 
-## Reports and Evidence
+---
 
-| Report | Path |
-|--------|------|
-| HTML report | `PrismStructure/playwright-report/index.html` |
-| Open report | `npm run report` |
+## Step 4 — View reports
+
+| Report | How to open |
+|--------|-------------|
+| HTML report | `npm run report` (opens `playwright-report/index.html`) |
 | API curl log | `PrismStructure/API/testdata/api_requests.log` |
-| Stored API JSON | `PrismStructure/API/testdata/*.json` |
-| Videos/traces | `PrismStructure/test-results/` (on failure) |
+| Execution evidence | `execution-evidence/` folder |
+| Pass/fail summary | `execution-evidence/test-results-summary.md` |
 
-## Test Coverage Summary
+---
 
-| Layer | Count | Smoke | Regression |
-|-------|-------|-------|------------|
-| Manual (CSV) | 14 | UI-01,02,05,06 + API-01,02,07 | All @Regression rows |
-| UI automation | 7 | UI-01,02,05,06 | UI-03,04,06,07 |
-| API automation | 8 | API-01,02,07 | API-03–08 |
-
-## Repository Structure
+## Repository structure
 
 ```
 qa-ai-practical-assessment/
-├── FunctionalTestCase.csv
-├── PrismStructure/
-├── project-info.md
-├── readme.md
-└── ai-prompts/
+├── readme.md                    ← Setup guide (this file)
+├── project-info.md              ← Part A: AI workflow + scope
+├── documentation-and-summary.md ← Reflection and reuse guide
+├── FunctionalTestCase.csv       ← Manual test cases
+├── execution-evidence/          ← Sample logs and pass summary
+├── ai-prompts/                  ← AI prompt history (5 files)
+└── PrismStructure/              ← Playwright automation
+    ├── UI/pageobjects/          ← Page Object Model
+    ├── API/pageobjects/         ← API endpoints and payloads
+    ├── tests/UI Test/           ← UI specs (smoke + regression)
+    ├── tests/API Test/          ← API specs (smoke + regression)
+    ├── playwright.config.js
+    └── package.json
 ```
 
-## Next Steps (after scaffold)
+---
 
-1. Run smoke suite and fix selectors against live app
-2. Ensure all tests **Passed** before submission
-3. Capture execution screenshots for evidence
-4. Fill `ai-prompts/` with real Cursor prompt history
-5. Push iteratively to public GitHub
+## Test coverage
+
+### Smoke (@smoke) — 7 tests
+
+| ID | Flow |
+|----|------|
+| UI-01 | Register new user |
+| UI-02 | Login and verify profile |
+| UI-05 | Checkout with Cash on Delivery |
+| UI-06 | Invoice (confirm twice) + My Invoices |
+| API-01 | Register via API |
+| API-02 | Login and get bearer token |
+| API-07 | Generate invoice via API |
+
+### Regression (@regression) — 8 additional tests
+
+| ID | Flow |
+|----|------|
+| UI-03 | Invalid login |
+| UI-04 | Add multiple products to cart |
+| UI-07 | Empty cart checkout |
+| API-03 | Invalid API login |
+| API-04 | Create cart |
+| API-05 | List products |
+| API-06 | Add to cart and verify |
+| API-08 | Invoice without token (401) |
+
+---
+
+## Related documents
+
+| Document | Purpose |
+|----------|---------|
+| `project-info.md` | AI workflow, tools, risks, scope |
+| `documentation-and-summary.md` | What worked, what was refined, reuse steps |
+| `ai-prompts/` | Full prompt history for evaluators |
+
+---
+
+## Troubleshooting
+
+| Problem | Fix |
+|---------|-----|
+| `BASE_URL` undefined | Copy `.env.example` to `.env` |
+| Browser not found | Run `npx playwright install chromium` |
+| Checkout fails on billing | Re-run — address fields may need a retry |
+| Invoice not generated | Ensure Confirm is clicked **twice** on UI |
+| Duplicate email error | Tests use Faker — re-run should create new user |

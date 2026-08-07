@@ -1,16 +1,49 @@
 # QA AI Practical Assessment — Project Info
 
-Primary AI Tool(s) Used: Cursor (Auto + Sonnet for automation)
+**Primary AI Tool(s) Used:** Cursor (Auto for planning/docs, Sonnet for automation code)
 
-Application Under Test: Practice Software Testing Toolshop — [https://practicesoftwaretesting.com](https://practicesoftwaretesting.com)
+**Application Under Test:** Practice Software Testing Toolshop — [https://practicesoftwaretesting.com](https://practicesoftwaretesting.com)
 
-API Documentation: [https://api.practicesoftwaretesting.com/api/documentation](https://api.practicesoftwaretesting.com/api/documentation)
+**API Documentation:** [https://api.practicesoftwaretesting.com/api/documentation](https://api.practicesoftwaretesting.com/api/documentation)
 
-Assessment Start Date: _TBD_ / Submission Date: _TBD_
+**Assessment Start Date:** 04-08-2026 / **Submission Date:** 07-08-2026
+
+**Reference Repo:** [assessmentAI_Project](https://github.com/ritukumari1-a11y/assessmentAI_Project)
+
+---
 
 ## Project Summary
 
 End-to-end QA assessment covering user registration/login, cart management, Cash on Delivery checkout, and invoice verification (UI) plus register/login/cart/product/invoice API lifecycle. Framework: Prism Playwright inside `PrismStructure/`.
+
+---
+
+## Scope
+
+### UI flows (AC1 + AC2)
+
+| Flow | Coverage |
+|------|----------|
+| Registration & Login (AC1) | UI-01, UI-02, UI-03 |
+| Cart management (AC2) | UI-04, UI-07 |
+| Checkout & Invoice (AC2) | UI-05, UI-06 |
+
+### API flows (AC1 + AC2)
+
+| Flow | Coverage |
+|------|----------|
+| Auth & Cart (AC1) | API-01, API-02, API-03, API-04 |
+| Products & Invoice (AC2) | API-05, API-06, API-07, API-08 |
+
+### Test tiers
+
+| Tier | Manual (CSV) | UI Auto | API Auto |
+|------|--------------|---------|----------|
+| Smoke | 6 cases | 4 tests | 3 tests |
+| Regression | 8 cases | 3 tests | 5 tests |
+| **Total** | **14** | **7** | **8** |
+
+---
 
 ## Tools Used
 
@@ -21,7 +54,23 @@ End-to-end QA assessment covering user registration/login, cart management, Cash
 | AI | Cursor (Auto for planning/docs, Sonnet for code) |
 | Test Data | @faker-js/faker, `testDataGenerator.js` |
 | Reports | Playwright HTML report, `API/testdata/api_requests.log` |
-| Browser | Chromium |
+| Browser | Chromium (Chrome channel) |
+
+---
+
+## Risks and Mitigations
+
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Invoice requires double Confirm on UI | Test fails if clicked once | `confirmOrderTwice()` in `checkoutPage.js` |
+| Stale bearer token in API chain | Later API calls fail | `SharedTestData` + serial test mode |
+| Dynamic address autofill clears fields | Checkout blocked | `ensureBillingReady()` re-fills house number |
+| Out-of-stock products | Add to cart fails | `addInStockProductToCart()` skips unavailable items |
+| Duplicate email on re-run | Registration fails | Faker generates unique email per test |
+| Unauthorized API access | False pass on wrong status | Assert 401/403 for negative cases |
+| AI-generated wrong selectors | UI tests flaky | Manual verification of `data-test` attributes |
+
+---
 
 ## AI Workflow (Part A)
 
@@ -76,3 +125,4 @@ End-to-end QA assessment covering user registration/login, cart management, Cash
 ### 10. Reuse in real projects
 
 - Same repo structure, iterative commits, prompt history folder, smoke/regression npm scripts
+- See `documentation-and-summary.md` for step-by-step reuse guide

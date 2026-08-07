@@ -8,9 +8,21 @@ Record prompts used for understanding Toolshop flows, identifying risks, and dra
 
 - **Prompt:**
   ```
-  Act As senior Qa engineer, do QA Practical Assessment and give me plan how i can do it in best way and use attchement for understanding the Assessment also prims_playwright framework is acttched and give plan and prompts how i can do in best way
-  /Users/deepankar.trivedi/Downloads/QA Practical Assessment.pdf
-  /Users/deepankar.trivedi/Downloads/prism_playwright
+ Act as Senior QA Automation engineer to prepare a QA assessment. Required document with assessment guidelines and a Prism architecture folder is attached. Based on these, create a complete assessment project that includes:
+
+1. README.md → overview of project, setup, and execution instructions.
+2. project-info.md → summary of application under test, scope (UI + API flows), tools used, and risks.
+3. FunctionalTestCase.csv → 5–8 manual test cases for UI (registration, login, checkout) and API (auth, cart, invoice).
+4. ai-prompts/ → record of prompts and responses, showing how AI was used for test design, automation, debugging, and documentation.
+5. PrismStructure/ → Playwright automation code for:
+   - Smoke tests: login, add to cart, checkout
+   - Regression tests: invalid login, cart update, invoice confirm twice
+   - API automation: auth, cart, invoice
+6. documentation-and-summary.md → reflection on what worked, what needed refinement, and how this workflow can be reused.
+7. Execution evidence → sample screenshots/logs showing tests passed.
+
+@/Users/deepankar.trivedi/Downloads/QA Practical Assessment.docx 
+Keep everything beginner-friendly, step-by-step, and minimalistic but complete. Use simple language and clear structure so it looks professional but easy to follow.@/Users/deepankar.trivedi/Downloads/prism_playwright 
   ```
 
 - **AI Response Summary:**

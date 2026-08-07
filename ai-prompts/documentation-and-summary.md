@@ -120,7 +120,28 @@ Prompts used for writing README, reports, and submission documentation.
 
 ---
 
-### Entry 6 — Summarize planning chats to ai-prompts (this session)
+### Entry 6 — Complete assessment project build
+
+- **Prompt:**
+  ```
+  Act as Senior QA Automation engineer to prepare a QA assessment.
+  Create complete project: README, project-info, FunctionalTestCase.csv,
+  ai-prompts/, PrismStructure automation, documentation-and-summary.md,
+  execution evidence. Reference assessment doc and prism_playwright framework.
+  ```
+
+- **AI Response Summary:**
+  Built full repo: 14 manual cases, 7 UI + 8 API automated tests, Prism page objects, smoke/regression npm scripts, execution-evidence with pass logs. All 15 regression tests passed on live SUT.
+
+- **Edits You Made:**
+  Added root `documentation-and-summary.md` for reflection. Renamed smoke log to `.txt` to avoid gitignore. Enhanced README with step-by-step beginner guide.
+
+- **Reason for Edits:**
+  Assessment item 6 asks for reflection doc at root; assessment item 7 asks for execution evidence with passed status.
+
+---
+
+### Entry 7 — Summarize planning chats to ai-prompts (prior session)
 
 - **Prompt:**
   ```

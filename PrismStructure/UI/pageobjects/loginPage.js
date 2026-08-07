@@ -9,9 +9,7 @@ class loginPage {
     this.email = page.locator("[data-test='email']");
     this.password = page.locator("[data-test='password']");
     this.loginButton = page.locator("[data-test='login-submit']");
-    this.errorAlert = page.locator(
-      ".alert-danger, .invalid-feedback, .text-danger, [role='alert']"
-    );
+    this.loginError = page.locator("[data-test='login-error']");
   }
 
   async goto() {
@@ -37,9 +35,8 @@ class loginPage {
 
   async verifyLoginError() {
     await expect(this.page).toHaveURL(/auth\/login/);
-    await expect(
-      this.errorAlert.or(this.page.getByText(/incorrect|invalid|wrong/i))
-    ).toBeVisible({ timeout: 10000 });
+    await expect(this.loginError).toBeVisible({ timeout: 10000 });
+    await expect(this.loginError).toContainText(/invalid email or password/i);
     this.log.logger("Login error message displayed");
   }
 }

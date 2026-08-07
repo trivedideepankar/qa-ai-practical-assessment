@@ -37,6 +37,13 @@ class productPage {
     throw new Error("No in-stock product found to add to cart");
   }
 
+  async waitForCartQuantity(expectedQty) {
+    await expect(this.cartQuantity).toBeVisible({ timeout: 15000 });
+    await expect(this.cartQuantity).toHaveText(String(expectedQty), {
+      timeout: 15000,
+    });
+  }
+
   async addMultipleInStockProducts(count = 2) {
     let added = 0;
     await this.gotoHome();
@@ -46,10 +53,15 @@ class productPage {
       await this.page.waitForURL(/\/product\//);
       if (await this.addToCartButton.isEnabled()) {
         await this.addToCartButton.click();
-        await this.page.waitForTimeout(1500);
         added++;
+        await this.waitForCartQuantity(added);
+      } else {
+        await this.page.goBack();
+        await this.productLinks.first().waitFor({ state: "visible" });
       }
-      await this.gotoHome();
+      if (added < count) {
+        await this.gotoHome();
+      }
     }
     expect(added).toBeGreaterThanOrEqual(count);
     this.log.logger(`Added ${added} in-stock product(s) to cart`);
@@ -70,7 +82,7 @@ class productPage {
   }
 
   async verifyCartQuantity(minQty = 1) {
-    await expect(this.cartQuantity).toBeVisible();
+    await expect(this.cartQuantity).toBeVisible({ timeout: 15000 });
     const qty = Number(await this.cartQuantity.textContent());
     expect(qty).toBeGreaterThanOrEqual(minQty);
     this.log.logger(`Cart quantity is ${qty}`);
