@@ -2,8 +2,6 @@
 
 Beginner-friendly guide for the **Practice Software Testing Toolshop** QA assessment using **Prism Playwright** and **Cursor AI**.
 
-> Reference submission: [assessmentAI_Project](https://github.com/ritukumari1-a11y/assessmentAI_Project)
-
 ---
 
 ## What is this project?
