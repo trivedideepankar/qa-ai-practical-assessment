@@ -100,5 +100,4 @@ npm run report           # HTML evidence
 
 - **SUT UI:** https://practicesoftwaretesting.com
 - **SUT API:** https://api.practicesoftwaretesting.com/api/documentation
-- **Reference repo:** https://github.com/ritukumari1-a11y/assessmentAI_Project
 - **Framework base:** `prism_playwright` (Prism + Playwright)
