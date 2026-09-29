@@ -8,8 +8,6 @@
 
 **Assessment Start Date:** 04-08-2026 / **Submission Date:** 07-08-2026
 
-**Reference Repo:** [assessmentAI_Project](https://github.com/ritukumari1-a11y/assessmentAI_Project)
-
 ---
 
 ## Project Summary
