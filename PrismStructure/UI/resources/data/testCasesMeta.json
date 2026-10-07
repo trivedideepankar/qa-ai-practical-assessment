@@ -1,0 +1,10 @@
+{
+  "registration": ["UI-01", "UI-02"],
+  "login": ["UI-02", "UI-03"],
+  "cart": ["UI-04", "UI-05"],
+  "checkout": ["UI-05", "UI-06"],
+  "invoice": ["UI-06", "UI-07"],
+  "api-auth": ["API-01", "API-02", "API-03"],
+  "api-cart": ["API-04", "API-06"],
+  "api-invoice": ["API-07", "API-08"]
+}

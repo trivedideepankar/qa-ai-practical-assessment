@@ -1,0 +1,82 @@
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+> qa-ai-practical-assessment-prism@1.0.0 test:smoke
+> npx playwright test --project=testcases_smoke --grep @smoke
+
+npm warn Unknown env config "devdir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+
+Running 7 tests using 1 worker
+
+(node:47871) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+Replaced!
+curl -X POST https://api.practicesoftwaretesting.com/users/register -H 'accept : application/json' -H 'Content-Type : application/json' -d '{"first_name":"Cassie","last_name":"Spencer","email":"cassie.spencer45@example.com","password":"QaWhL3Irf2!1","dob":"1990-05-15","address":["123 Main St"],"postal_code":"10001","city":"New York","state":"New York","country":"US","phone":"3481979518"}'
+Data has been saved to registeredUser.json
+  ✓  1 [testcases_smoke] › API Test/01_authCartApi.spec.js:22:5 › API-01 Register user via API @smoke @regression (802ms)
+curl -X POST https://api.practicesoftwaretesting.com/users/login -H 'accept : application/json' -H 'Content-Type : application/json' -d '{"email":"cassie.spencer45@example.com","password":"QaWhL3Irf2!1"}'
+Data has been saved to AccessToken.json
+  ✓  2 [testcases_smoke] › API Test/01_authCartApi.spec.js:42:5 › API-02 Login and obtain bearer token @smoke @regression (626ms)
+Replaced!
+curl -X POST https://api.practicesoftwaretesting.com/users/register -H 'accept : application/json' -H 'Content-Type : application/json' -d '{"first_name":"Laurianne","last_name":"Hartmann","email":"laurianne.hartmann@example.com","password":"QaOwZWNb2d!1","dob":"1990-05-15","address":["123 Main St"],"postal_code":"10001","city":"New York","state":"New York","country":"US","phone":"2452669954"}'
+curl -X POST https://api.practicesoftwaretesting.com/users/login -H 'accept : application/json' -H 'Content-Type : application/json' -d '{"email":"laurianne.hartmann@example.com","password":"QaOwZWNb2d!1"}'
+curl -X POST https://api.practicesoftwaretesting.com/carts -H 'accept : application/json' -H 'Content-Type : application/json' -H 'Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5wcmFjdGljZXNvZnR3YXJldGVzdGluZy5jb20vdXNlcnMvbG9naW4iLCJpYXQiOjE3ODYwOTQzNjEsImV4cCI6MTc4NjA5NDY2MSwibmJmIjoxNzg2MDk0MzYxLCJqdGkiOiJiMEkyMldiZmM5YnFOdDZVIiwic3ViIjoiMDFremRyYTZjbWc3a3g0NThwcm43NjJqYXYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.MTY7GAic7p4dvxKVIZHYAoX40DJ2fHpX6DOThu8EZO0' -d '{}'
+curl -X POST https://api.practicesoftwaretesting.com/invoices -H 'accept : application/json' -H 'Content-Type : application/json' -H 'Authorization : Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5wcmFjdGljZXNvZnR3YXJldGVzdGluZy5jb20vdXNlcnMvbG9naW4iLCJpYXQiOjE3ODYwOTQzNjEsImV4cCI6MTc4NjA5NDY2MSwibmJmIjoxNzg2MDk0MzYxLCJqdGkiOiJiMEkyMldiZmM5YnFOdDZVIiwic3ViIjoiMDFremRyYTZjbWc3a3g0NThwcm43NjJqYXYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.MTY7GAic7p4dvxKVIZHYAoX40DJ2fHpX6DOThu8EZO0' -d '{"billing_street":"Zoey Shore","billing_city":"Hesselbury","billing_state":"Florida","billing_country":"TG","billing_postal_code":"1234AA","payment_method":"cash-on-delivery","cart_id":"01kzdra7et89z4p61sre7c3bsw","payment_details":{}}'
+Data has been saved to generatedInvoice.json
+  ✓  3 [testcases_smoke] › API Test/02_productInvoiceApi.spec.js:104:5 › API-07 Generate invoice with billing payload @smoke @regression (575ms)
+info: [2026-08-07T09:19:27.910Z] Navigated to register page
+info: [2026-08-07T09:19:28.039Z] Filled registration form for america.wiegand@example.com
+info: [2026-08-07T09:19:28.070Z] Submitted registration form
+info: [2026-08-07T09:19:31.048Z] Registration success verified
+  ✓  4 [testcases_smoke] › UI Test/01_registrationLogin.spec.js:25:3 › Registration and Login › UI-01 Register new user with valid details @smoke @regression (7.5s)
+info: [2026-08-07T09:19:34.348Z] Navigated to register page
+info: [2026-08-07T09:19:34.445Z] Filled registration form for margarette.leffler@example.com
+info: [2026-08-07T09:19:34.467Z] Submitted registration form
+info: [2026-08-07T09:19:36.334Z] Registration success verified
+info: [2026-08-07T09:19:36.366Z] Submitted login for margarette.leffler@example.com
+info: [2026-08-07T09:19:38.219Z] Logged in as margarette.leffler@example.com
+info: [2026-08-07T09:19:38.226Z] User session active — navigation visible
+info: [2026-08-07T09:19:38.553Z] Navigated to profile page
+info: [2026-08-07T09:19:40.420Z] Profile details verified
+  ✓  5 [testcases_smoke] › UI Test/01_registrationLogin.spec.js:32:3 › Registration and Login › UI-02 Login and verify profile @smoke @regression (10.0s)
+info: [2026-08-07T09:19:44.812Z] Navigated to register page
+info: [2026-08-07T09:19:44.928Z] Filled registration form for jennie_littel@example.com
+info: [2026-08-07T09:19:44.957Z] Submitted registration form
+info: [2026-08-07T09:19:46.825Z] Registration success verified
+info: [2026-08-07T09:19:46.864Z] Submitted login for jennie_littel@example.com
+info: [2026-08-07T09:19:50.253Z] Logged in as jennie_littel@example.com
+info: [2026-08-07T09:19:51.857Z] Navigated to home/products page
+info: [2026-08-07T09:19:59.482Z] Added in-stock product at index 1 to cart
+info: [2026-08-07T09:20:11.741Z] Opened cart/checkout
+info: [2026-08-07T09:20:11.794Z] Advanced to billing step
+info: [2026-08-07T09:20:13.865Z] Filled checkout billing address
+info: [2026-08-07T09:20:13.913Z] Selected Cash on Delivery payment method
+info: [2026-08-07T09:20:19.688Z] Clicked Confirm (finish) twice for invoice generation
+info: [2026-08-07T09:20:19.688Z] Completed checkout with Cash on Delivery
+  ✓  6 [testcases_smoke] › UI Test/03_checkoutInvoice.spec.js:34:3 › Checkout and Invoice E2E › UI-05 Checkout with Cash on Delivery @smoke @regression (38.7s)
+info: [2026-08-07T09:20:22.999Z] Navigated to register page
+info: [2026-08-07T09:20:23.090Z] Filled registration form for kiley_schoen@example.com
+info: [2026-08-07T09:20:23.113Z] Submitted registration form
+info: [2026-08-07T09:20:24.982Z] Registration success verified
+info: [2026-08-07T09:20:25.021Z] Submitted login for kiley_schoen@example.com
+info: [2026-08-07T09:20:27.316Z] Logged in as kiley_schoen@example.com
+info: [2026-08-07T09:20:28.926Z] Navigated to home/products page
+info: [2026-08-07T09:20:34.528Z] Added in-stock product at index 1 to cart
+info: [2026-08-07T09:20:37.830Z] Opened cart/checkout
+info: [2026-08-07T09:20:37.894Z] Advanced to billing step
+info: [2026-08-07T09:20:39.971Z] Filled checkout billing address
+info: [2026-08-07T09:20:40.025Z] Selected Cash on Delivery payment method
+info: [2026-08-07T09:20:45.799Z] Clicked Confirm (finish) twice for invoice generation
+info: [2026-08-07T09:20:45.799Z] Completed checkout with Cash on Delivery
+info: [2026-08-07T09:20:46.436Z] Navigated to My Invoices
+info: [2026-08-07T09:20:48.342Z] Invoice visible in My Invoices list
+  ✓  7 [testcases_smoke] › UI Test/03_checkoutInvoice.spec.js:42:3 › Checkout and Invoice E2E › UI-06 Generate invoice (confirm twice) and verify in My Invoices @smoke @regression (28.7s)
+
+  Slow test file: [testcases_smoke] › UI Test/03_checkoutInvoice.spec.js (1.1m)
+  Slow test file: [testcases_smoke] › UI Test/01_registrationLogin.spec.js (17.4s)
+  Consider splitting slow test files to speed up parallel execution
+  7 passed (1.5m)
+
+To open last HTML report run:
+
+  npx playwright show-report
+

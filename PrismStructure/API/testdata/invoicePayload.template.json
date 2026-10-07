@@ -1,0 +1,10 @@
+{
+  "billing_street": "Zoey Shore",
+  "billing_city": "Hesselbury",
+  "billing_state": "Florida",
+  "billing_country": "US",
+  "billing_postal_code": "1234AA",
+  "payment_method": "cash-on-delivery",
+  "cart_id": "<cart_id_from_create_cart>",
+  "payment_details": {}
+}
